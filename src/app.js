@@ -5,6 +5,7 @@ import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { login, logout } from './actions/auth';
 import {startSetUsers} from './actions/users';
+import {startSetTeammates} from './actions/teammates';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
@@ -32,10 +33,13 @@ firebase.auth().onAuthStateChanged((user)=> {
       console.log('about to call startSetUser');
       store.dispatch(login(user.uid));
       store.dispatch(startSetUsers()).then(() => {
+        store.dispatch(startSetTeammates()).then(() => {
           renderApp();
           if(history.location.pathname==='/'){
-              history.push('/dashboard');
-          }
+            history.push('/dashboard');
+        }
+        })
+       
       });
 
   } else {
