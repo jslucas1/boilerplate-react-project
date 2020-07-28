@@ -2,9 +2,9 @@ import React from 'react';
 import { Router, Route, Switch, Link, NavLink } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import DashboardPage from '../components/DashboardPage';
-import AddUserPage from '../components/AddUserPage';
+import AddProjectPage from '../components/AddProjectPage';
 import AddTeammatePage from '../components/AddTeammatePage';
-import EditUserPage from '../components/EditUserPage';
+import EditProjectPage from '../components/EditProjectPage';
 import EditTeammatePage from '../components/EditTeammatePage';
 import NotFoundPage from '../components/NotFoundPage';
 import LoginPage from '../components/LoginPage';
@@ -19,8 +19,8 @@ const AppRouter = () => (
       <Switch>
         <PublicRoute path="/" component={LoginPage} exact={true} />
         <PrivateRoute path="/dashboard" component={DashboardPage} />
-        <PrivateRoute path="/createuser" component={AddUserPage} />
-        <PrivateRoute path="/edituser/:id" component={EditUserPage} />
+        <PrivateRoute path="/createproject" component={AddProjectPage} />
+        <PrivateRoute path="/editproject/:id" component={EditProjectPage} />
         <PrivateRoute path="/editteammate/:id/:id" component={EditTeammatePage} />
         <PrivateRoute path="/createteammate/:id" component={AddTeammatePage} />
         <Route component={NotFoundPage} />

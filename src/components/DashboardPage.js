@@ -1,9 +1,9 @@
 import React from 'react';
-import UserList from '../components/UserList';
+import ProjectList from '../components/ProjectList';
 
 const DashboardPage = () => (
   <div>
-    <UserList />
+    <ProjectList />
   </div>
 );
 

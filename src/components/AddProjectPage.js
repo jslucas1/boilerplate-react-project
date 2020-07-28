@@ -1,11 +1,11 @@
 import React from 'react';
-import UserForm from './UserForm';
+import ProjectForm from './ProjectForm';
 import {connect} from 'react-redux';
-import { startAddUser } from '../actions/users';
+import { startAddProject } from '../actions/projects';
 
-export class AddUserPage extends React.Component {
-    onSubmit = (user) => {
-        this.props.startAddUser(user);
+export class AddProjectPage extends React.Component {
+    onSubmit = (project) => {
+        this.props.startAddProject(project);
         this.props.history.push('/');
     };
     render() {
@@ -13,11 +13,11 @@ export class AddUserPage extends React.Component {
             <div>
                 <div className="page-header">
                     <div className="content-container">
-                        <h1 className="page-header__title">Add User</h1>
+                        <h1 className="page-header__title">Add Project</h1>
                     </div>
                 </div>
                 <div className="content-container">
-                    <UserForm 
+                    <ProjectForm 
                     onSubmit = {this.onSubmit}
                     />
                 </div>
@@ -29,8 +29,8 @@ export class AddUserPage extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        startAddUser: (user) => dispatch(startAddUser(user))
+        startAddProject: (project) => dispatch(startAddProject(project))
     };
 };
 
-export default connect(undefined, mapDispatchToProps)(AddUserPage);
+export default connect(undefined, mapDispatchToProps)(AddProjectPage);

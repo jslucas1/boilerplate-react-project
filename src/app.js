@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { login, logout } from './actions/auth';
-import {startSetUsers} from './actions/users';
+import {startSetProjects} from './actions/projects';
 import {startSetTeammates} from './actions/teammates';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
@@ -28,11 +28,11 @@ const renderApp = () => {
 
 ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
-firebase.auth().onAuthStateChanged((user)=> {
-  if(user){
-      console.log('about to call startSetUser');
-      store.dispatch(login(user.uid));
-      store.dispatch(startSetUsers()).then(() => {
+firebase.auth().onAuthStateChanged((project)=> {
+  if(project){
+      console.log('about to call startSetProject');
+      store.dispatch(login(project.uid));
+      store.dispatch(startSetProjects()).then(() => {
         store.dispatch(startSetTeammates()).then(() => {
           renderApp();
           if(history.location.pathname==='/'){
